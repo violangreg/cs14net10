@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "X18VcRln9n0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\viola_c0hvccf\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\viola_c0hvccf\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.0\\microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",
+    "C:\\Users\\viola_c0hvccf\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

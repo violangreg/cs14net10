@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "xrXqKHhlHzw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\viola_c0hvccf\\cs14net10\\Chapter02\\Exercise_Numbers\\Exercise_Numbers.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\viola_c0hvccf\\.nuget\\packages\\spectre.console\\0.54.0\\spectre.console.0.54.0.nupkg.sha512",
+    "C:\\Users\\viola_c0hvccf\\.nuget\\packages\\spectre.console.cli\\0.53.1\\spectre.console.cli.0.53.1.nupkg.sha512"
+  ],
+  "logs": []
+}
