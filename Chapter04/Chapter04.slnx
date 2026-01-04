@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TopLevelFunctions/TopLevelFunctions.csproj" />
+  <Project Path="WritingFunctions/WritingFunctions.csproj" />
+</Solution>
