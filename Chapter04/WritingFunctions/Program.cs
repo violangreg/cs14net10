@@ -11,3 +11,6 @@
 //RunCardinalToOrdinal();
 RunFactorial();
 CardinalToOrdinal(0);
+
+//RunFibImperative();
+RunFibFunctional();
