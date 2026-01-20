@@ -10,3 +10,7 @@ if (int.TryParse(input, out int number))
         arg1: PrimeFactorsLib.PrimeFactors(number)
     );
 }
+else
+{
+    Console.WriteLine("Invalid input. Please enter a valid integer.");
+}
