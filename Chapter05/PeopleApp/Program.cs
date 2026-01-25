@@ -1,5 +1,8 @@
 ﻿using Dumpify;
 using Packt.Shared;
+using Spectre.Console.Rendering;
+using Fruit = (string Name, int Number);
+using UnnamedParameters = (string, int);
 
 ConfigureConsole();
 Person bob = new();
@@ -119,3 +122,124 @@ WriteLine(
     arg1: gunny.HomePlanet,
     arg2: gunny.Instantiated
 );
+
+bob.WriteToConsole();
+WriteLine(bob.GetOrigin());
+
+WriteLine(bob.SayHello());
+WriteLine(bob.SayHello("Emily"));
+
+WriteLine(bob.OptionalParameters(3));
+WriteLine(bob.OptionalParameters(3, "Jump!", 98.5));
+
+// Naming parameter values when calling methods
+WriteLine(bob.OptionalParameters(number: 52.7, command: "Hide!", count: 3));
+
+// Skipping parameters
+WriteLine(bob.OptionalParameters(3, "Poke!", active: false));
+
+int a = 10;
+int b = 20;
+int c = 30;
+int d = 40;
+WriteLine($"Before: a={a}, b={b}, c={c}, d={d}");
+bob.PassingParameters(a, b, ref c, out d);
+WriteLine($"After: a={a}, b={b}, c={c}, d={d}");
+
+int e = 50;
+int f = 60;
+int g = 70;
+WriteLine($"Before: e={e}, f={f}, g={g}, h doesn't exist yet!");
+bob.PassingParameters(e, f, ref g, out int h);
+WriteLine($"After: e={e}, f={f}, g={g}, h={h}");
+
+// params keyword allows a method to accept a variable number of arguments, it must be the last parameter in the method definition
+bob.ParamsParameter("Sum using commas", 3, 6, 1, 2);
+bob.ParamsParameter("Sum using collection expression", [3, 6, 1, 2]);
+bob.ParamsParameter("Sum using explicit array", new int[] { 3, 6, 1, 2 });
+bob.ParamsParameter("Sum (empty)");
+
+// using tuples for multiple return values instead of defining a class
+(string, int) fruit = bob.GetFruit();
+UnnamedParameters fruit2 = bob.GetFruit();
+WriteLine($"{fruit.Item1}, {fruit.Item2} there are.");
+WriteLine($"{fruit2.Item1}, {fruit2.Item2} there are 2.");
+
+// without an alias tuple
+//var fruitNamed = bob.GetNamedFruit(); // we use var to shorten the syntax: (string Name, int Number) fruitNamed = bob.GetNamedFruit();
+Fruit fruitNamed = bob.GetNamedFruit(); // Aliasing tuples ^ look at the top of the file
+WriteLine($"There are {fruitNamed.Number} {fruitNamed.Name}.");
+
+// tuple name inference
+var thing1 = ("Neville", 4);
+WriteLine($"{thing1.Item1} has {thing1.Item2} children.");
+var thing2 = (bob.Name, bob.Children.Count);
+WriteLine($"{thing2.Name} has {thing2.Count} children.");
+
+// deconstructing tuples
+(string name, int number) namedFields = bob.GetNamedFruit();
+WriteLine($"{namedFields.name}, {namedFields.number}");
+(string name, int number) = bob.GetNamedFruit(); // or namedFields
+WriteLine($"{name}, {number}");
+
+(string fruitName, int fruitNumber) = bob.GetFruit();
+WriteLine($"Deconstructed tuple: {fruitName}, {fruitNumber}");
+
+var (name1, dob1) = bob;
+WriteLine($"Deconstructed person: {name1}, {dob1}");
+var (name2, dob2, fav2) = bob;
+WriteLine($"Deconstructed person: {name2}, {dob2}, {fav2}");
+
+// local function test
+int number5 = 5;
+try
+{
+    WriteLine($"{number5}! is {Person.Factorial(number5)}");
+}
+catch (Exception ex)
+{
+    WriteLine($"{ex.GetType()} says: {ex.Message} number was {number5}");
+}
+
+// using properties
+Person sam = new() { Name = "Sam", Born = new(1969, 6, 25, 0, 0, 0, TimeSpan.Zero) };
+WriteLine(sam.Origin);
+WriteLine(sam.Greeting);
+WriteLine(sam.Age);
+sam.FavoriteIceCream = "Chocolate Fudge";
+WriteLine($"Sam's favorite ice-cream flavor is {sam.FavoriteIceCream}.");
+string color = "Orange";
+try
+{
+    sam.FavoritePrimaryColor = color;
+    WriteLine($"Sam's favorite primary color is {sam.FavoritePrimaryColor}");
+}
+catch (Exception ex)
+{
+    WriteLine(
+        "Tried to set {0} to '{1}': {2}",
+        nameof(sam.FavoritePrimaryColor),
+        color,
+        ex.Message
+    );
+}
+
+//bob.FavoriteAncientWonder =
+//    WondersOfTheAncientWorld.StatueOfZeusAtOlympia | WondersOfTheAncientWorld.GreatPyramidOfGiza;
+WondersOfTheAncientWorld favWonder = (WondersOfTheAncientWorld)22;
+try
+{
+    bob.FavoriteAncientWonder = favWonder;
+    WriteLine("Bob's favorite ancient wonder: {0}", bob.FavoriteAncientWonder);
+}
+catch (Exception ex)
+{
+    WriteLine(
+        "Tried to set {0} to {1}: {2}",
+        nameof(bob.FavoriteAncientWonder),
+        favWonder,
+        ex.Message
+    );
+}
+
+var test12 = ReadLine();
