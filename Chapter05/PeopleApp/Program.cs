@@ -242,4 +242,121 @@ catch (Exception ex)
     );
 }
 
-var test12 = ReadLine();
+//var test12 = ReadLine();
+
+sam.Children.Add(new() { Name = "Charlie", Born = new(2010, 3, 18, 0, 0, 0, TimeSpan.Zero) });
+sam.Children.Add(new() { Name = "Ella", Born = new(2020, 12, 24, 0, 0, 0, TimeSpan.Zero) });
+
+// Get using Children list
+WriteLine($"Sam's first child is {sam.Children[0].Name}");
+WriteLine($"Sam's second child is {sam.Children[1].Name}");
+
+// Get using the indexer
+WriteLine($"Sam's first child is {sam[0].Name}");
+WriteLine($"Sam's second child is {sam[1].Name}");
+
+// Get using the string indexer
+WriteLine($"Sam's child named Ella is {sam["Ella"].Age} years old");
+
+// Pattern match flight passengers
+Passenger[] passengers =
+{
+    new FirstClassPassenger { AirMiles = 1_419, Name = "Suman" },
+    new FirstClassPassenger { AirMiles = 16_562, Name = "Lucy" },
+    new BusinessClassPassenger { Name = "Janice" },
+    new CoachClassPassenger { CarryOnKG = 25.7, Name = "Dave" },
+    new CoachClassPassenger { CarryOnKG = 0, Name = "Amit" },
+};
+foreach (Passenger passenger in passengers)
+{
+    decimal flightCost = passenger switch
+    {
+        /* C# 8 syntax
+        FirstClassPassenger p when p.AirMiles > 35_000 => 1_500M,
+        FirstClassPassenger p when p.AirMiles > 15_000 => 1_750M,
+        FirstClassPassenger _ => 2_000M,
+        */
+        // C# 9 or later syntax
+        // FirstClassPassenger p => p.AirMiles switch
+        // {
+        //     > 35_000 => 1_500M,
+        //     > 15_000 => 1_750M,
+        //     _ => 2_000M,
+        // },
+        // Relational pattern with property pattern
+        FirstClassPassenger { AirMiles: > 35_000 } => 1500M,
+        FirstClassPassenger { AirMiles: > 15_000 } => 1750M,
+        FirstClassPassenger => 2000M,
+        BusinessClassPassenger _ => 1_000M,
+        CoachClassPassenger p when p.CarryOnKG < 10.0 => 500M,
+        CoachClassPassenger _ => 650M,
+        _ => 800M,
+    };
+    WriteLine($"Flight costs {flightCost:C} for {passenger}");
+}
+
+// Using init keyword in a property, can only be initialize and never be changed afterwards also known as an Immutable object,
+// even if intialization is empty, use required keyword to force it to be set
+ImmutablePerson jeff = new() { FirstName = "Jeff", LastName = "Winger" };
+
+//jeff.FirstName = "Geoff";
+
+// C# 9, using record keyword on a type
+ImmutableVehicle car = new()
+{
+    Brand = "Mazda MX-5 RF",
+    Color = "Soul Red Crystal Metallic",
+    Wheels = 4,
+};
+
+// mutated copy aka non-destructive mutation
+ImmutableVehicle repaintedCar = car with
+{
+    Color = "Polymetal Gray Metallic",
+};
+WriteLine($"Original car color was {car.Color}");
+WriteLine($"New car color is {repaintedCar.Color}"); // You can release the memory for the car variable and repaintedCar would still fully exist
+
+// Comparing class vs record equality, two records with the same property values are considered equal aka value-based equality
+// whereas with class, it is only equal when their memory addresses are equal, meaning they are literally the same object
+AnimalClass ac1 = new() { Name = "Rex" };
+AnimalClass ac2 = new() { Name = "Rex" };
+WriteLine($"ac1 == ac2: {ac1 == ac2}");
+AnimalRecord ar1 = new() { Name = "Rex" };
+AnimalRecord ar2 = new() { Name = "Rex" };
+WriteLine($"ar1 == ar2: {ar1 == ar2}");
+
+// Equality of other types
+// Two value type variables
+int number1 = 3;
+int number2 = 3;
+WriteLine($"number1: {number1}, number2: {number2}");
+WriteLine($"number1 == number2: {number1 == number2}");
+
+// Two reference type instances
+Person p1 = new() { Name = "Kevin" };
+Person p2 = new() { Name = "Kevin" };
+
+// This is literally pointing to the same object on the heap,
+// this is an exception to string type since the equality operators have been overriden to make them behave as if they were value types
+Person p3 = p1;
+
+WriteLine($"p1 == p2: {p1 == p2}");
+WriteLine($"p1 == p3: {p1 == p3}"); // so it is True
+WriteLine($"p1.Name == p2.Name: {p1.Name == p2.Name}"); // We can also do this for our classes by overriding the equality operator or just use a record class instead
+
+// Using positional record
+ImmutableAnimal oscar = new("Oscar", "Labrador");
+var (who, what) = oscar;
+WriteLine($"{who} is a {what}");
+
+// Primary constructor
+Headset vp = new("Apple", "Vision Pro");
+WriteLine($"{vp.ProductName} is made by {vp.Manufacturer}");
+Headset holo = new();
+WriteLine($"{holo.ProductName} is made by {holo.Manufacturer}"); // using the default
+Headset mq = new() { Manufacturer = "Meta", ProductName = "Quest3" };
+WriteLine($"{mq.ProductName} is made by {mq.Manufacturer}");
+
+// Car fiat = new() { Wheels = 4, IsEV = true };
+// fiat.Start();
