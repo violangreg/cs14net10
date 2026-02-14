@@ -2,7 +2,7 @@ using Packt.Shared;
 
 partial class Program
 {
-    private static void OutputPeopleNames(IEnumerable<Person> people, string title)
+    private static void OutputPeopleNames(IEnumerable<Person?> people, string title)
     {
         WriteLine(title);
         foreach (Person? p in people)

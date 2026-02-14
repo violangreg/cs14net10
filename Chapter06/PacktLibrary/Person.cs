@@ -8,6 +8,7 @@ public class Person : IComparable<Person>
     public List<Person> Children { get; set; } = new();
     public List<Person> Spouses { get; set; } = new();
     public bool Married => Spouses.Count > 0;
+    public int? Height { get; set; }
     #endregion
 
     #region Methods
@@ -169,6 +170,34 @@ public class Person : IComparable<Person>
     public override string ToString()
     {
         return $"{Name} is a {base.ToString()}";
+    }
+    #endregion
+
+    public void TimeTravel(DateTime when)
+    {
+        if (when < Born)
+        {
+            throw new PersonException(
+                "If you travel back in time to a date before you were born, then the universe will explode!"
+            );
+        }
+        else
+        {
+            WriteLine($"Welcome to {when:yyyy}!");
+        }
+    }
+
+    #region Method chaining
+    public Person GetOlder()
+    {
+        Born = Born.AddYears(-1);
+        return this;
+    }
+
+    public Person ChangeName(string newName)
+    {
+        Name = newName;
+        return this;
     }
     #endregion
 }

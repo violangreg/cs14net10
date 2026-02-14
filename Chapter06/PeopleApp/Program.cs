@@ -165,3 +165,41 @@ if (aliceAsEmployee is not null)
     WriteLine($"{nameof(aliceInPerson)} is an Employee");
     aliceAsEmployee.WriteToConsole();
 }
+
+try
+{
+    john.TimeTravel(when: new(1999, 12, 31));
+    john.TimeTravel(when: new(1950, 12, 25));
+}
+catch (PersonException ex)
+{
+    WriteLine($"Time travel failed: {ex.Message}");
+}
+
+string email1 = "pamela@test.com";
+string email2 = "ian&test.com";
+WriteLine(format: "{0} is a valid email address: {1}", arg0: email1, arg1: email1.IsValidEmail());
+WriteLine(format: "{0} is a valid email address: {1}", arg0: email2, arg1: email2.IsValidEmail());
+
+WriteLine($"{john.Name}'s birthday is {john.Born:yyyy-MM-dd}");
+john.GetOlder().ChangeName("Jonathan");
+WriteLine($"{john.Name}'s birthday is {john.Born:yyyy-MM-dd}");
+
+Person greg = new Person()
+    .SetName("Greg")
+    .SetBirthDate(
+        new(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, offset: TimeSpan.Zero)
+    );
+
+greg.WriteToConsole();
+
+greg.SetHeight(185);
+WriteLine($"{greg.Name} is tall: {greg.IsTall()}");
+
+// extension methods are used to add methods to existing types without modifying the original type, and they can be used with method chaining to create fluent interfaces.
+// you can also use it to extend static types
+
+//StringExtensions s = new();
+Animal dog = new();
+dog.Speak += Dog_Speak;
+dog.MakeSound();

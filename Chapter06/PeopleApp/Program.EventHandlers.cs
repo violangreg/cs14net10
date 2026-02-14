@@ -19,4 +19,15 @@ partial class Program
     {
         WriteLine("Stop it!");
     }
+
+    private static void Dog_Speak(object? sender, EventArgs e)
+    {
+        if (sender is null)
+            return;
+
+        if (sender is not Animal)
+            return;
+
+        WriteLine("The dog says: Ruff!");
+    }
 }
