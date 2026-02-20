@@ -20,3 +20,6 @@ packages/
 # Rider / VS Code
 .idea/
 .vscode/
+
+# Database
+Chapter10/WorkingWithEFCore/Northwind.db

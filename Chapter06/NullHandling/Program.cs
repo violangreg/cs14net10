@@ -23,7 +23,6 @@ Address address = new(city: "London")
 };
 
 WriteLine(address.Building?.Length);
-
 if (address.Street is not null)
 {
     WriteLine(address.Street.Length);

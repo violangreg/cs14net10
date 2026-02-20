@@ -193,13 +193,14 @@ Person greg = new Person()
 
 greg.WriteToConsole();
 
-greg.SetHeight(185);
-WriteLine($"{greg.Name} is tall: {greg.IsTall()}");
 
 // extension methods are used to add methods to existing types without modifying the original type, and they can be used with method chaining to create fluent interfaces.
 // you can also use it to extend static types
+var height = greg.SetHeight(185).IsTall();
+WriteLine($"{greg.Name} is tall: {greg.IsTall()}");
+var s = "asdasd@asd".IsValidEmail();
+WriteLine(s);
 
-//StringExtensions s = new();
 Animal dog = new();
 dog.Speak += Dog_Speak;
 dog.MakeSound();
