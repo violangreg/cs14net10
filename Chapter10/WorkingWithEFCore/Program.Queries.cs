@@ -92,7 +92,7 @@ partial class Program
         }
     }
 
-    public static void QueryingProducts()
+    private static void QueryingProducts()
     {
         using NorthwindDb db = new();
         SectionTitle("Products that cost more than a specified amount");

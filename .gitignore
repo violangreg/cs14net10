@@ -22,4 +22,8 @@ packages/
 .vscode/
 
 # Database
-Chapter10/WorkingWithEFCore/Northwind.db
+Chapter10/*/*.db-*
+Chapter10/*/*.db
+*/*/*.db-*
+*/*/*.db
+*/*/Migrations
