@@ -49,8 +49,29 @@ await using (FileStream jsonLoad = File.Open("categories.json", FileMode.Open))
         }
     }
 
-    WriteLine(
-        JsonSchemaExporter.GetJsonSchemaAsNode(JsonSerializerOptions.Default, typeof(Category))
-    );
+    // WriteLine(
+    //     JsonSchemaExporter.GetJsonSchemaAsNode(JsonSerializerOptions.Default, typeof(Category))
+    // );
 }
 
+// Using JsonPatch for efficient partial payload updates with HTTP Patch request
+Category category2 = new()
+{
+    CategoryName = "Perishables",
+    Description = "Items that will spoil if not kept cold",
+};
+
+WriteLine($"Before: {FastJson.Serialize(category2)}");
+string jsonPatch = """
+[
+    {"op": "replace", "path": "/CategoryName", "value": "Perishables101"},
+    {"op": "replace", "path": "/Description", "value": "Do not let item stay at room temperature, keep cold"}
+]
+""";
+JsonPatchDocument<Category>? patchDoc = FastJson.Deserialize<JsonPatchDocument<Category>>(
+    jsonPatch
+);
+
+patchDoc!.ApplyTo(category2);
+
+WriteLine($"After: {FastJson.Serialize(category2)}");

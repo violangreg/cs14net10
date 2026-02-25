@@ -11,6 +11,7 @@ public class NorthwindDb : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         //string databaseFile = "Northwind.db";
+        // Path.Combine(Environment.CurrentDirectory, databaseFile);
         string path = @"C:\Users\viola\repos\cs14net10\Chapter10\WorkingWithEFCore\Northwind.db";
         string connectionString = $"Data Source={path}";
         WriteLine($"Connection: {connectionString}");

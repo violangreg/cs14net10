@@ -12,13 +12,13 @@ using (Academy a = new())
     WriteLine("SQL script used to create the database:");
     WriteLine(a.Database.GenerateCreateScript());
 
-    foreach (Student s in a.Students.Include(s => s.Courses))
+    foreach (Student s in a.Students!.Include(s => s.Courses))
     {
         WriteLine(
             "{0} {1} attends the following {2} courses:",
             s.FirstName,
             s.LastName,
-            s.Courses.Count
+            s.Courses!.Count
         );
 
         foreach (Course c in s.Courses)
