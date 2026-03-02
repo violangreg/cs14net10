@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\viola_c0hvccf\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj": {}
+    "C:\\Users\\viola\\repos\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\viola_c0hvccf\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj": {
+    "C:\\Users\\viola\\repos\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\viola_c0hvccf\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\viola\\repos\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj",
         "projectName": "Northwind.WebApi",
-        "projectPath": "C:\\Users\\viola_c0hvccf\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj",
-        "packagesPath": "C:\\Users\\viola_c0hvccf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\viola_c0hvccf\\cs14net10\\ModernWeb\\Northwind.WebApi\\obj\\",
+        "projectPath": "C:\\Users\\viola\\repos\\cs14net10\\ModernWeb\\Northwind.WebApi\\Northwind.WebApi.csproj",
+        "packagesPath": "C:\\Users\\viola\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\viola\\repos\\cs14net10\\ModernWeb\\Northwind.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\viola_c0hvccf\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\viola\\repos\\cs14net10\\ModernWeb\\NuGet.Config",
+          "C:\\Users\\viola\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -47,20 +53,21 @@
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[10.0.0, )",
+              "version": "[10.0.3, )",
               "versionCentrallyManaged": true
             }
           },
           "centralPackageVersions": {
             "coverlet.collector": "6.0.4",
-            "Microsoft.AspNetCore.Components.WebAssembly": "10.0.0",
-            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": "10.0.0",
-            "Microsoft.AspNetCore.Components.WebAssembly.Server": "10.0.0",
-            "Microsoft.AspNetCore.OpenApi": "10.0.0",
-            "Microsoft.EntityFrameworkCore.Design": "10.0.0",
-            "Microsoft.EntityFrameworkCore.Sqlite": "10.0.0",
+            "Microsoft.AspNetCore.Components.WebAssembly": "10.0.3",
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": "10.0.3",
+            "Microsoft.AspNetCore.Components.WebAssembly.Server": "10.0.3",
+            "Microsoft.AspNetCore.OpenApi": "10.0.3",
+            "Microsoft.EntityFrameworkCore.Design": "10.0.3",
+            "Microsoft.EntityFrameworkCore.Sqlite": "10.0.3",
+            "Microsoft.EntityFrameworkCore.SqlServer": "10.0.3",
             "Microsoft.NET.Test.Sdk": "18.0.1",
-            "Scalar.AspNetCore": "2.10.3",
+            "Scalar.AspNetCore": "2.12.36",
             "xunit": "2.9.3",
             "xunit.runner.visualstudio": "3.1.5"
           },
