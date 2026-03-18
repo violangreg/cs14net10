@@ -27,3 +27,16 @@ Chapter10/*/*.db
 */*/*.db-*
 */*/*.db
 */*/Migrations
+ModernWeb/Northwind.EntityModels.Sqlite/NorthwindContext.cs
+ModernWeb/Northwind.WebApi/bin/Debug/net10.0/Northwind.WebApi.dll
+ModernWeb/Northwind.WebApi/bin/Debug/net10.0/Northwind.WebApi.exe
+ModernWeb/Northwind.WebApi/bin/Debug/net10.0/Northwind.WebApi.pdb
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/apphost.exe
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/Northwind.WebApi.AssemblyInfo.cs
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/Northwind.WebApi.AssemblyInfoInputs.cache
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/Northwind.WebApi.dll
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/Northwind.WebApi.pdb
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/ref/Northwind.WebApi.dll
+ModernWeb/Northwind.WebApi/obj/Debug/net10.0/refint/Northwind.WebApi.dll
