@@ -7,4 +7,11 @@
   <ItemGroup Label="To simplify use of WriteLine.">
     <Using Include="System.Console" Static="true" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\Layout\" />
+  </ItemGroup>
+  <!-- Change Sqlite to SqlServer if you prefer. -->
+  <ItemGroup>
+    <ProjectReference Include="..\Northwind.DataContext.Sqlite\Northwind.DataContext.Sqlite.csproj" />
+  </ItemGroup>
 </Project>
