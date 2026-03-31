@@ -1,0 +1,46 @@
+﻿<EditForm Model="@Customer" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div>
+        <label class="form-label">Customer Id</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Customer.CustomerId" disabled="@Disabled" />
+            <ValidationMessage For="@(() => Customer.CustomerId)" />
+        </div>
+    </div>
+    <div>
+        <label class="form-label">Company Name</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Customer.CompanyName" disabled="@Disabled" />
+            <ValidationMessage For="@(() => Customer.CompanyName)" />
+        </div>
+    </div>
+    <div>
+        <label class="form-label">Address</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Customer.Address" disabled="@Disabled" />
+            <ValidationMessage For="@(() => Customer.Address)" />
+        </div>
+    </div>
+    <div>
+        <label class="form-label">Country</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Customer.Country" disabled="@Disabled" />
+            <ValidationMessage For="@(() => Customer.Country)" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-@ButtonStyle">@ButtonText</button>
+</EditForm>
+
+@code
+{
+    [Parameter]
+    public Customer Customer { get; set; } = null!;
+    [Parameter]
+    public string ButtonText { get; set; } = "Save Changes";
+    [Parameter]
+    public string ButtonStyle { get; set; } = "info";
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+    [Parameter]
+    public bool Disabled { get; set; } = false;
+}
