@@ -1,4 +1,10 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using Northwind.Blazor.Components.Pages
+@rendermode RenderMode.InteractiveServer
+@inject NavigationManager _navigation
+@inject IJSRuntime _jsRuntime
+@inject NavigationConfirmationService _confirmationService
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Northwind.Blazor</a>
     </div>
@@ -15,13 +21,13 @@
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
+            <NavLink class="nav-link" href="counter" >
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
+            <NavLink class="nav-link" href="weather" >
                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
             </NavLink>
         </div>
@@ -32,7 +38,7 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="customers/Germany">
+            <NavLink class="nav-link" href="customers/Germany" >
                 <span class="bi bi-globe-europe-africa" aria-hidden="true"></span>
                 Customers in Germany
             </NavLink>
@@ -41,3 +47,19 @@
     </nav>
 </div>
 
+@code {
+    private EditCustomer? editCustomer;
+    @* private async Task NavigateWithConfirmation(string href)
+    {
+        if (_confirmationService.HasUnsavedChanges)
+        {
+            bool confirm = await _jsRuntime.InvokeAsync<bool>("confirm", "You have unsaved changes. Leave anyway?");
+            if (!confirm)
+            {
+                return; // Stay on page
+            }
+            _confirmationService.HasUnsavedChanges = false; // Clear on leave
+        }
+        _navigation.NavigateTo(href);
+    } *@
+}

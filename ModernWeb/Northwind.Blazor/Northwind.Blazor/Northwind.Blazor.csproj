@@ -20,9 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Northwind.Blazor.Services\Northwind.Blazor.Services.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
 
   <ItemGroup>
     <!-- change Sqlite to SqlServer if you prefer -->

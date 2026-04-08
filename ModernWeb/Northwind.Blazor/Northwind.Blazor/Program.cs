@@ -10,12 +10,14 @@ builder
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+
 // If you are using SQLite that uses a database file.
 builder.Services.AddNorthwindContext(relativePath: @"..\..");
 
 // If you are using SQL Server.
 // builder.Services.AddNorthwindContext();
 builder.Services.AddTransient<INorthwindService, NorthwindServiceServerSide>();
+builder.Services.AddScoped<NavigationConfirmationService>();
 
 var app = builder.Build();
 
